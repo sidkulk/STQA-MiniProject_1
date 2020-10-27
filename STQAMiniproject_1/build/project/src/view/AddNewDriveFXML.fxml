@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="newDriveRootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewDriveFXMLController">
+   <children>
+      <Label layoutX="53.0" layoutY="94.0" prefHeight="34.0" prefWidth="98.0" text="Company Name" AnchorPane.leftAnchor="40.0" />
+      <Label layoutX="40.0" layoutY="148.0" prefHeight="34.0" prefWidth="98.0" text="Date of Drive" AnchorPane.leftAnchor="40.0" />
+      <Label layoutX="36.0" layoutY="208.0" prefHeight="34.0" prefWidth="106.0" text="10th Minimum %" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="40.0" layoutY="264.0" prefHeight="34.0" prefWidth="106.0" text="12th Minimum %" AnchorPane.leftAnchor="40.0" />
+      <Label layoutX="36.0" layoutY="336.0" prefHeight="34.0" prefWidth="137.0" text="BE Minimum %" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="450.0" layoutY="95.0" prefHeight="34.0" prefWidth="162.0" text="Maximum Active Backlogs" AnchorPane.leftAnchor="450.0" />
+      <Label layoutX="451.0" layoutY="147.0" prefHeight="34.0" prefWidth="156.0" text="Maximum Dead backlogs" AnchorPane.leftAnchor="451.0" />
+      <Label layoutX="467.0" layoutY="264.0" prefHeight="34.0" prefWidth="38.0" text="CTC" AnchorPane.leftAnchor="467.0" />
+      <TextField fx:id="companyName" layoutX="153.0" layoutY="99.0" prefHeight="26.0" prefWidth="210.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="52.0" prefWidth="843.0" text="Add New Campus Drive" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TenthMinPerc" layoutX="153.0" layoutY="212.0" prefHeight="26.0" prefWidth="210.0" />
+      <TextField fx:id="TwelthMinPerc" layoutX="153.0" layoutY="268.0" prefHeight="26.0" prefWidth="210.0" />
+      <TextField fx:id="BEMinPerc" layoutX="153.0" layoutY="340.0" prefHeight="26.0" prefWidth="98.0" AnchorPane.leftAnchor="153.0" />
+      <TextField fx:id="MaxActiveBacks" layoutX="628.0" layoutY="98.0" prefHeight="26.0" prefWidth="106.0" />
+      <TextField fx:id="MaxDeadBacks" layoutX="628.0" layoutY="151.0" prefHeight="26.0" prefWidth="105.0" />
+      <TextField fx:id="ctcOfCompany" layoutX="545.0" layoutY="268.0" prefHeight="26.0" prefWidth="122.0" />
+      <DatePicker fx:id="dateOfDrive" layoutX="153.0" layoutY="152.0" />
+      <Button fx:id="addDriveBtn" layoutX="153.0" layoutY="452.0" mnemonicParsing="false" onAction="#addDriveToDatabase" prefHeight="34.0" prefWidth="190.0" text="Add Drive" />
+      <Button fx:id="cancelDriveBtn" layoutX="491.0" layoutY="452.0" mnemonicParsing="false" onAction="#backToAdminDash" prefHeight="34.0" prefWidth="190.0" text="Cancel" />
+      <Label layoutX="450.0" layoutY="216.0" text="Branch" />
+      <TextField fx:id="branchTxtBox" layoutX="546.0" layoutY="211.0" prefHeight="26.0" prefWidth="253.0" />
+   </children>
+</AnchorPane>

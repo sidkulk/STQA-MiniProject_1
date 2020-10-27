@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="STQAMiniproject_1.jar" size="7423" download="eager" />
+    <jar href="STQAMiniproject_1.jar" size="12213" download="eager" />
     <jar href="libs\jfoenix-8.0.10.jar" size="2710207" download="eager" />
   </resources>
   <jfx:javafx-desc  width="0" height="0" main-class="application.Main"  name="Placementportal" />

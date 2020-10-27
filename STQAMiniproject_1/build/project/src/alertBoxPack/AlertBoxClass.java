@@ -35,16 +35,16 @@ public class AlertBoxClass {
 	
 	public static void logOutConfirmation(AnchorPane rootpane) throws Exception {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-	    alert.setTitle("LOGOUT");
-	    alert.setHeaderText("Are you sure you want to LOGOUT?");
-	    alert.setContentText("LOGOUT from ACCOUNT");
+	    alert.setTitle("Alert");
+	    alert.setHeaderText("LOGOUT");
+	    alert.setContentText("Are you sure you want to LOGOUT?");
 	    
 	    Optional<ButtonType> option = alert.showAndWait();
 	    if(option.get() == ButtonType.OK) {
 	    	ScreenPackClass.showLoginPage(rootpane);
 	    }
 	    else if(option.get() == ButtonType.CANCEL) {
-	    	ScreenPackClass.showAdminLoginScreen(rootpane);
+	    	ScreenPackClass.showAdminDashScreen(rootpane);
 	    }
 	}
 }

@@ -7,75 +7,51 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0"
-	prefWidth="754.0" tabClosingPolicy="UNAVAILABLE"
-	xmlns="http://javafx.com/javafx/11.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.AdminDashBoardFXMLController">
+<TabPane fx:id="rootAdminDashPane" prefHeight="631.0" prefWidth="1170.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardFXMLController">
 	<tabs>
 		<Tab text="Campus Drives">
 			<content>
-				<AnchorPane minHeight="0.0" minWidth="0.0"
-					prefHeight="180.0" prefWidth="200.0">
+				<AnchorPane fx:id="campusDrivePane" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="924.0">
 					<children>
-						<TableView layoutX="18.0" layoutY="16.0"
-							prefHeight="207.0" prefWidth="695.0" AnchorPane.leftAnchor="10.0"
-							AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
-							<columns>
-								<TableColumn prefWidth="75.0" text="C1" />
-								<TableColumn prefWidth="75.0" text="C2" />
-							</columns>
-						</TableView>
-						<Button fx:id="AddNewDriveBtn" layoutX="106.0"
-							layoutY="352.0" mnemonicParsing="false" onAction="#addNewDrive"
-							prefHeight="35.0" prefWidth="180.0" text="Add New Drive"
-							AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="25.0" />
-						<Button fx:id="RemoveSelectedDriveBtn" layoutX="457.0"
-							layoutY="352.0" mnemonicParsing="false"
-							onAction="#removeSelDrive" prefHeight="35.0" prefWidth="190.0"
-							text="Remove Selected Drive" AnchorPane.bottomAnchor="15.0"
-							AnchorPane.rightAnchor="285.0" />
+						<Button fx:id="AddNewDriveBtn" layoutX="20.0" layoutY="476.0" mnemonicParsing="false" onAction="#addNewDrive" prefHeight="35.0" prefWidth="395.0" text="Add New Drive" AnchorPane.bottomAnchor="90.40000000000003" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="650.0" />
+						<Button fx:id="RemoveSelectedDriveBtn" layoutX="692.0" layoutY="476.0" mnemonicParsing="false" onAction="#removeSelDrive" prefHeight="35.0" prefWidth="385.0" text="Remove Selected Drive" AnchorPane.bottomAnchor="90.40000000000003" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="20.0" />
+                  <TableView layoutX="65.0" layoutY="14.0" prefHeight="394.0" prefWidth="759.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                    <columns>
+                      <TableColumn fx:id="driveID" prefWidth="75.0" resizable="false" sortable="false" text="Drive ID" visible="false" />
+                      <TableColumn fx:id="compName" editable="false" prefWidth="247.19997864961624" resizable="false" sortable="false" text="Company" />
+                        <TableColumn fx:id="driveDate" editable="false" prefWidth="108.80000305175781" resizable="false" sortable="false" text="Drive Date" />
+                        <TableColumn fx:id="driveCTC" editable="false" prefWidth="91.20001220703125" resizable="false" sortable="false" text="CTC" />
+                        <TableColumn fx:id="driveBranch" editable="false" prefWidth="124.80001831054688" resizable="false" sortable="false" text="Eligible Branch" />
+                        <TableColumn editable="false" prefWidth="102.4000244140625" resizable="false" sortable="false" text="Xth %" fx:id="xthPerc" />
+                        <TableColumn editable="false" prefWidth="102.39996337890625" resizable="false" sortable="false" text="XIIth %" fx:id="xiiPerc" />
+                        <TableColumn fx:id="beAvgPerc" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="BE avg %" />
+                        <TableColumn fx:id="maxDeadbacks" editable="false" prefWidth="128.79998779296875" resizable="false" sortable="false" text="Max. Dead Backs" />
+                        <TableColumn fx:id="maxLiveBacks" editable="false" prefWidth="147.99993896484375" resizable="false" sortable="false" text="Max. Live Backs" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="logOutBtnOne" layoutX="508.0" layoutY="543.0" mnemonicParsing="false" onAction="#logOutAction" prefHeight="36.0" prefWidth="154.0" text="LOG OUT" />
 					</children>
 				</AnchorPane>
 			</content>
 		</Tab>
 		<Tab text="Student Info">
 			<content>
-				<AnchorPane minHeight="0.0" minWidth="0.0"
-					prefHeight="180.0" prefWidth="200.0">
+				<AnchorPane fx:id="studInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 					<children>
-						<TableView layoutX="14.0" layoutY="14.0"
-							prefHeight="196.0" prefWidth="714.0" AnchorPane.leftAnchor="10.0"
-							AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+						<TableView layoutX="42.0" layoutY="14.0" prefHeight="274.0" prefWidth="1033.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
 							<columns>
-								<TableColumn prefWidth="75.0" text="C1" />
-								<TableColumn prefWidth="75.0" text="C2" />
+								<TableColumn prefWidth="75.0" text="MSN" />
+								<TableColumn prefWidth="211.99996948242188" text="First Name" />
+                        <TableColumn prefWidth="192.0" text="Last Name" />
+                        <TableColumn prefWidth="117.5999755859375" text="Ph. Number" />
+                        <TableColumn prefWidth="151.20001220703125" text="Email" />
+                        <TableColumn prefWidth="141.5999755859375" text="Branch" />
+                        <TableColumn prefWidth="180.0" text="College" />
 							</columns>
 						</TableView>
-						<Button fx:id="addNewStudBtn" layoutX="21.0"
-							layoutY="352.0" mnemonicParsing="false" onAction="#addNewStud"
-							prefHeight="35.0" prefWidth="200.0" text="Add New Student"
-							AnchorPane.bottomAnchor="15.199999999999989"
-							AnchorPane.leftAnchor="20.0" />
-						<Button fx:id="removeSelStudBtn" layoutX="277.0"
-							layoutY="352.0" mnemonicParsing="false"
-							onAction="#removeSelectedStud" prefHeight="35.0"
-							prefWidth="200.0" text="Remove Selected Student"
-							AnchorPane.bottomAnchor="15.199999999999989"
-							AnchorPane.rightAnchor="277.4" />
-					</children>
-				</AnchorPane>
-			</content>
-		</Tab>
-		<Tab text="Account">
-			<content>
-				<AnchorPane fx:id="accountRootPane" minHeight="0.0"
-					minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-					<children>
-						<Button fx:id="logOutBtn" layoutX="300.0" layoutY="352.0"
-							mnemonicParsing="false" onAction="#logOutAction"
-							prefHeight="36.0" prefWidth="154.0" text="LOG OUT" />
+						<Button fx:id="addNewStudBtn" layoutX="50.0" layoutY="445.0" mnemonicParsing="false" onAction="#addNewStud" prefHeight="35.0" prefWidth="200.0" text="Add New Student" AnchorPane.bottomAnchor="121.40000000000003" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="600.0" />
+						<Button fx:id="removeSelStudBtn" layoutX="599.0" layoutY="445.0" mnemonicParsing="false" onAction="#removeSelectedStud" prefHeight="35.0" prefWidth="200.0" text="Remove Selected Student" AnchorPane.bottomAnchor="121.40000000000003" AnchorPane.leftAnchor="599.0" AnchorPane.rightAnchor="51.0" />
+                  <Button fx:id="logOutBtnTwo" layoutX="508.0" layoutY="529.0" mnemonicParsing="false" onAction="#logOutActionTwo" prefHeight="36.0" prefWidth="154.0" text="LOG OUT" />
 					</children>
 				</AnchorPane>
 			</content>

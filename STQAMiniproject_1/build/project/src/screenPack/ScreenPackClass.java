@@ -30,8 +30,26 @@ public class ScreenPackClass {
 		stage.show();
 	}
 
-	public static void showAdminLoginScreen(AnchorPane rootpane) throws Exception {
+	public static void showAdminDashScreen(AnchorPane rootpane) throws Exception {
 		Parent root = FXMLLoader.load(Main.class.getResource("/view/AdminDashBoardFXML.fxml"));
+		Stage stage = (Stage) rootpane.getScene().getWindow();
+		Scene scene = new Scene(root);
+		stage.setResizable(false);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public static void showAddNewDriveScreen(AnchorPane rootpane) throws Exception {
+		Parent root = FXMLLoader.load(Main.class.getResource("/view/AddNewDriveFXML.fxml"));
+		Stage stage = (Stage) rootpane.getScene().getWindow();
+		Scene scene = new Scene(root);
+		stage.setResizable(false);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public static void showAddNewStudentScreen(AnchorPane rootpane) throws Exception {
+		Parent root = FXMLLoader.load(Main.class.getResource("/view/AddNewStudentFXML.fxml"));
 		Stage stage = (Stage) rootpane.getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setResizable(false);
