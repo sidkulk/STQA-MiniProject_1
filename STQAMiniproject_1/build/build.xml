@@ -110,7 +110,7 @@
 			<manifest>
 				<attribute name="Implementation-Vendor" value="Siddharth Kulkarni"/>
 				<attribute name="Implementation-Title" value="Placementportal"/>
-				<attribute name="Implementation-Version" value="1.1"/>
+				<attribute name="Implementation-Version" value="1.2"/>
 				<attribute name="JavaFX-Feature-Proxy" value="None"/>
 			</manifest>
 		</fx:jar>

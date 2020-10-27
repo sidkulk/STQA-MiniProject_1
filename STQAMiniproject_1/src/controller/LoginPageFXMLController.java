@@ -41,7 +41,7 @@ public class LoginPageFXMLController {
 		} else {
 			if (adminIDTxtField.getText().equals(TestCredClass.username)
 					&& adminPassTextField.getText().equals(TestCredClass.passwd)) {
-				ScreenPackClass.showAdminLoginScreen(loginRootPane);
+				ScreenPackClass.showAdminDashScreen(loginRootPane);
 			} else {
 				System.out.println("Incorrect Credentials!");
 			}

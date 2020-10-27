@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginRootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="700.0" style="-fx-background-color: #d1d8e0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageFXMLController">
+<AnchorPane fx:id="loginRootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="754.0" style="-fx-background-color: #d1d8e0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageFXMLController">
 	<children>
 		<HBox layoutX="249.0" layoutY="47.0" prefHeight="463.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
 			<children>
-				<VBox fx:id="adminRootPane" alignment="CENTER" prefHeight="439.0" prefWidth="350.0" style="-fx-background-color: #f1f2f6;">
+				<VBox fx:id="adminRootPane" alignment="CENTER" prefHeight="487.0" prefWidth="389.0" style="-fx-background-color: #f1f2f6;">
 					<children>
 						<Label alignment="CENTER" prefHeight="59.0" prefWidth="198.0" text="Admin Login">
 							<VBox.margin>
@@ -24,12 +24,12 @@
 								<Font name="Consolas Bold" size="25.0" />
 							</font>
 						</Label>
-						<Label alignment="CENTER" prefHeight="30.0" prefWidth="134.0" text="Admin ID">
+						<Label alignment="CENTER" prefHeight="43.0" prefWidth="179.0" text="Admin ID">
 							<VBox.margin>
 								<Insets bottom="10.0" />
 							</VBox.margin>
 							<font>
-								<Font name="Consolas Bold" size="15.0" />
+								<Font name="Consolas Bold" size="20.0" />
 							</font>
 						</Label>
 						<TextField fx:id="adminIDTxtField">
@@ -37,12 +37,12 @@
 								<Insets left="20.0" right="20.0" />
 							</VBox.margin>
 						</TextField>
-						<Label alignment="CENTER" prefHeight="30.0" prefWidth="187.0" text="Admin Password">
+						<Label alignment="CENTER" prefHeight="46.0" prefWidth="246.0" text="Admin Password">
 							<VBox.margin>
 								<Insets bottom="10.0" top="50.0" />
 							</VBox.margin>
 							<font>
-								<Font name="Consolas Bold" size="15.0" />
+								<Font name="Consolas Bold" size="20.0" />
 							</font>
 						</Label>
                   <PasswordField fx:id="adminPassTextField">
@@ -54,13 +54,16 @@
                      <VBox.margin>
                         <Insets bottom="50.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
 					</children>
 					<HBox.margin>
 						<Insets />
 					</HBox.margin>
 				</VBox>
-				<VBox fx:id="studentRootPane" alignment="CENTER" prefHeight="510.0" prefWidth="350.0" style="-fx-background-color: #a4b0be;">
+				<VBox fx:id="studentRootPane" alignment="CENTER" prefHeight="487.0" prefWidth="401.0" style="-fx-background-color: #a4b0be;">
 					<children>
 						<Label alignment="CENTER" prefHeight="59.0" prefWidth="250.0" text="Student Login">
 							<font>
@@ -70,12 +73,12 @@
 								<Insets bottom="100.0" top="20.0" />
 							</VBox.margin>
 						</Label>
-						<Label alignment="CENTER" prefHeight="30.0" prefWidth="136.0" text="Student ID">
+						<Label alignment="CENTER" prefHeight="39.0" prefWidth="177.0" text="Student ID">
 							<VBox.margin>
 								<Insets bottom="10.0" />
 							</VBox.margin>
 							<font>
-								<Font name="Consolas Bold" size="15.0" />
+								<Font name="Consolas Bold" size="20.0" />
 							</font>
 						</Label>
 						<TextField fx:id="studIDTextField">
@@ -83,12 +86,12 @@
 								<Insets left="20.0" right="20.0" />
 							</VBox.margin>
 						</TextField>
-						<Label alignment="CENTER" prefHeight="30.0" prefWidth="194.0" text="Student Password">
+						<Label alignment="CENTER" prefHeight="46.0" prefWidth="254.0" text="Student Password">
 							<VBox.margin>
 								<Insets bottom="10.0" top="50.0" />
 							</VBox.margin>
 							<font>
-								<Font name="Consolas Bold" size="15.0" />
+								<Font name="Consolas Bold" size="20.0" />
 							</font>
 						</Label>
                   <PasswordField fx:id="studentPassTextField">
@@ -100,6 +103,9 @@
                      <VBox.margin>
                         <Insets bottom="50.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
 					</children>
 					<HBox.margin>
