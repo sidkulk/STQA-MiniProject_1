@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import alertBoxPack.AlertBoxClass;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +13,8 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.DataEntryValidation;
+import model.DatabaseOperations;
 import screenPack.ScreenPackClass;
 import javafx.scene.control.ComboBox;
 
@@ -42,7 +45,30 @@ public class AddNewStudentFXMLController implements Initializable {
 
 	@FXML
 	void addStudentDatabase(ActionEvent event) {
+		boolean addStudToDB;
+		try {
+			boolean isFieldEmpty = DataEntryValidation.checkEmptyFields(firstName.getText(), lastName.getText(),
+					masterSerialNum.getText(), emailAddress.getText(), studentBranch.getValue().toString(),
+					studentCollege.getValue().toString());
 
+			if (isFieldEmpty) {
+				AlertBoxClass.Amber("Missing Fields", "You left some fields empty!");
+			}
+			if (!DataEntryValidation.checkEmailRegex(emailAddress.getText())) {
+				AlertBoxClass.ErrBox("ERROR", "Enter a Valid Email address!");
+			} else {
+				addStudToDB = DatabaseOperations.addStudentToDatabase(Integer.parseInt(masterSerialNum.getText()),
+						firstName.getText(), lastName.getText(), emailAddress.getText(),
+						studentBranch.getValue().toString(), studentCollege.getValue().toString());
+				if (addStudToDB) {
+					System.out.println("Student added to database!");
+					AlertBoxClass.Notify("SUCCESS", "Student has been added to database!");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			AlertBoxClass.Amber("Missing Option", "Please select a dept AND College");
+		}
 	}
 
 	@FXML

@@ -1,16 +1,28 @@
 package controller;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import model.DatabaseOperations;
+import model.Drive;
+import model.DriveDataAccessClass;
+import model.Student;
+import model.StudentDataAccessClass;
 import screenPack.ScreenPackClass;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import alertBoxPack.AlertBoxClass;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
-public class AdminDashBoardFXMLController {
+public class AdminDashBoardFXMLController implements Initializable {
 	@FXML
 	private TabPane rootAdminDashPane;
 
@@ -24,35 +36,59 @@ public class AdminDashBoardFXMLController {
 	private Button RemoveSelectedDriveBtn;
 
 	@FXML
-	private TableColumn<?, ?> driveID;
+	private TableColumn<Drive, Integer> driveID;
 
 	@FXML
-	private TableColumn<?, ?> compName;
+	private TableColumn<Drive, String> compName;
 
 	@FXML
-	private TableColumn<?, ?> driveDate;
+	private TableColumn<Drive, String> driveDate;
 
 	@FXML
-	private TableColumn<?, ?> driveCTC;
+	private TableColumn<Drive, String> driveCTC;
 
 	@FXML
-	private TableColumn<?, ?> driveBranch;
+	private TableColumn<Drive, String> driveBranch;
 
 	@FXML
-	private TableColumn<?, ?> xthPerc;
+	private TableColumn<Drive, String> xthPerc;
 
 	@FXML
-	private TableColumn<?, ?> xiiPerc;
+	private TableColumn<Drive, String> xiiPerc;
 
 	@FXML
-	private TableColumn<?, ?> beAvgPerc;
+	private TableColumn<Drive, String> beAvgPerc;
 
 	@FXML
-	private TableColumn<?, ?> maxDeadbacks;
+	private TableColumn<Drive, String> maxDeadbacks;
 
 	@FXML
-	private TableColumn<?, ?> maxLiveBacks;
+	private TableColumn<Drive, String> maxLiveBacks;
+	
+	@FXML
+    private TableView<Drive> driveTabView;
+	
+	@FXML
+    private TableView<Student> studTabView;
+	
+	@FXML
+    private TableColumn<Student, Integer> stuMSN;
 
+    @FXML
+    private TableColumn<Student, String> stuFname;
+
+    @FXML
+    private TableColumn<Student, String> stuLname;
+
+    @FXML
+    private TableColumn<Student, String> stuEmail;
+
+    @FXML
+    private TableColumn<Student, String> stuBranch;
+
+    @FXML
+    private TableColumn<Student, String> stuClg;
+	
 	@FXML
 	private Button logOutBtnOne;
 
@@ -67,6 +103,9 @@ public class AdminDashBoardFXMLController {
 
 	@FXML
 	private Button logOutBtnTwo;
+
+	ObservableList<Drive> driveList;
+	ObservableList<Student> stuList;
 
 	@FXML
 	public void addNewDrive(ActionEvent event) throws Exception {
@@ -96,5 +135,30 @@ public class AdminDashBoardFXMLController {
 	@FXML
 	void logOutActionTwo(ActionEvent event) throws Exception {
 		logOutAction(event);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		driveID.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_ID));
+		compName.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_NAME));
+		driveDate.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_DATE));
+		driveCTC.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_CTC));
+		driveBranch.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_BRANCH));
+		xthPerc.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_X_MIN));
+		xiiPerc.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_XII_MIN));
+		beAvgPerc.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_BE_MIN));
+		maxDeadbacks.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_MAX_DEAD_BACK));
+		maxLiveBacks.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_MAX_LIVE_BACK));
+		driveList = DatabaseOperations.getCompanyDetails();
+		driveTabView.setItems(driveList);
+		
+		stuMSN.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_MSN));
+		stuFname.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_FNAME));
+		stuLname.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_LNAME));
+		stuEmail.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_EMAIL));
+		stuBranch.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_BRANCH));
+		stuClg.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_COLLEGE));
+		stuList = DatabaseOperations.getStudentDetails();
+		studTabView.setItems(stuList);
 	}
 }

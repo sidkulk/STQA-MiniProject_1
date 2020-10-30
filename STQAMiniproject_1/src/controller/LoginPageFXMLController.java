@@ -49,7 +49,13 @@ public class LoginPageFXMLController {
 	}
 
 	@FXML
-	public void studLoginRoutine(ActionEvent event) {
-		System.out.println("Student Login Method Called");
+	public void studLoginRoutine(ActionEvent event) throws Exception {
+		if(studIDTextField.getText().isEmpty() && studentPassTextField.getText().isEmpty()) {
+			System.out.println("EMpty Fields!");
+		} else {
+			if(studIDTextField.getText().equals(TestCredClass.studName) && studentPassTextField.getText().equals(TestCredClass.studPasswd)) {
+				ScreenPackClass.showStudentDashBoard(loginRootPane);
+			}
+		}
 	}
 }

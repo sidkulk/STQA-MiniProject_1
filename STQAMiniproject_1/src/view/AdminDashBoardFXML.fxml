@@ -15,7 +15,7 @@
 					<children>
 						<Button fx:id="AddNewDriveBtn" layoutX="20.0" layoutY="476.0" mnemonicParsing="false" onAction="#addNewDrive" prefHeight="35.0" prefWidth="395.0" text="Add New Drive" AnchorPane.bottomAnchor="90.40000000000003" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="650.0" />
 						<Button fx:id="RemoveSelectedDriveBtn" layoutX="692.0" layoutY="476.0" mnemonicParsing="false" onAction="#removeSelDrive" prefHeight="35.0" prefWidth="385.0" text="Remove Selected Drive" AnchorPane.bottomAnchor="90.40000000000003" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="20.0" />
-                  <TableView layoutX="65.0" layoutY="14.0" prefHeight="394.0" prefWidth="759.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                  <TableView fx:id="driveTabView" layoutX="65.0" layoutY="14.0" prefHeight="394.0" prefWidth="759.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                     <columns>
                       <TableColumn fx:id="driveID" prefWidth="75.0" resizable="false" sortable="false" text="Drive ID" visible="false" />
                       <TableColumn fx:id="compName" editable="false" prefWidth="247.19997864961624" resizable="false" sortable="false" text="Company" />
@@ -38,15 +38,14 @@
 			<content>
 				<AnchorPane fx:id="studInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 					<children>
-						<TableView layoutX="42.0" layoutY="14.0" prefHeight="274.0" prefWidth="1033.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
+						<TableView fx:id="studTabView" layoutX="42.0" layoutY="14.0" prefHeight="274.0" prefWidth="1033.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
 							<columns>
-								<TableColumn prefWidth="75.0" text="MSN" />
-								<TableColumn prefWidth="211.99996948242188" text="First Name" />
-                        <TableColumn prefWidth="192.0" text="Last Name" />
-                        <TableColumn prefWidth="117.5999755859375" text="Ph. Number" />
-                        <TableColumn prefWidth="151.20001220703125" text="Email" />
-                        <TableColumn prefWidth="141.5999755859375" text="Branch" />
-                        <TableColumn prefWidth="180.0" text="College" />
+								<TableColumn fx:id="stuMSN" prefWidth="75.0" text="MSN" />
+								<TableColumn fx:id="stuFname" prefWidth="211.99996948242188" text="First Name" />
+                        <TableColumn fx:id="stuLname" prefWidth="159.20001220703125" text="Last Name" />
+                        <TableColumn fx:id="stuEmail" prefWidth="326.4000244140625" text="Email" />
+                        <TableColumn fx:id="stuBranch" prefWidth="153.5999755859375" text="Branch" />
+                        <TableColumn fx:id="stuClg" prefWidth="143.199951171875" text="College" />
 							</columns>
 						</TableView>
 						<Button fx:id="addNewStudBtn" layoutX="50.0" layoutY="445.0" mnemonicParsing="false" onAction="#addNewStud" prefHeight="35.0" prefWidth="200.0" text="Add New Student" AnchorPane.bottomAnchor="121.40000000000003" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="600.0" />

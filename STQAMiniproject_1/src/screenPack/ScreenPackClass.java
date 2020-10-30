@@ -25,7 +25,7 @@ public class ScreenPackClass {
 		Stage stage = (Stage) rootpane.getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setResizable(false);
-		stage.setTitle("Key Logger");
+		stage.setTitle("TnP Portal");
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -50,6 +50,15 @@ public class ScreenPackClass {
 	
 	public static void showAddNewStudentScreen(AnchorPane rootpane) throws Exception {
 		Parent root = FXMLLoader.load(Main.class.getResource("/view/AddNewStudentFXML.fxml"));
+		Stage stage = (Stage) rootpane.getScene().getWindow();
+		Scene scene = new Scene(root);
+		stage.setResizable(false);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public static void showStudentDashBoard(AnchorPane rootpane) throws Exception {
+		Parent root = FXMLLoader.load(Main.class.getResource("/view/StudentDashBoardFXML.fxml"));
 		Stage stage = (Stage) rootpane.getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setResizable(false);

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="rootAddNewStudPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewStudentFXMLController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="58.0" prefWidth="416.0" text="Add New Student" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -51,7 +50,7 @@
       </Label>
       <ComboBox fx:id="studentBranch" layoutX="615.0" layoutY="170.0" prefWidth="150.0" promptText="Select Branch" />
       <ComboBox fx:id="studentCollege" layoutX="615.0" layoutY="251.0" prefWidth="150.0" promptText="Select College" />
+      <Button fx:id="cancelBtn" layoutX="482.0" layoutY="496.0" mnemonicParsing="false" onAction="#goBackToAdminDash" prefHeight="32.0" prefWidth="224.0" text="Back" />
       <Button fx:id="addStudentBtn" layoutX="127.0" layoutY="496.0" mnemonicParsing="false" onAction="#addStudentDatabase" prefHeight="32.0" prefWidth="224.0" text="Add Student" />
-      <Button fx:id="cancelBtn" layoutX="482.0" layoutY="496.0" mnemonicParsing="false" onAction="#goBackToAdminDash" prefHeight="32.0" prefWidth="224.0" text="Cancel" />
    </children>
 </AnchorPane>
