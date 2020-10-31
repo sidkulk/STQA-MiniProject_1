@@ -63,8 +63,7 @@ public class AddNewStudentFXMLController implements Initializable {
 							studentBranch.getValue().toString(), studentCollege.getValue().toString(),
 							GeneratePasswordClass.generatePassword(20));
 					if (addStudToDB) {
-						System.out.println("Student added to database!");
-						AlertBoxClass.Notify("SUCCESS", "Student has been added to database!");
+						System.out.println("Student database operation performed!");
 					}
 				}
 			}
