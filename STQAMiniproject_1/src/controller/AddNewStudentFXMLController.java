@@ -54,18 +54,21 @@ public class AddNewStudentFXMLController implements Initializable {
 
 			if (isFieldEmpty) {
 				AlertBoxClass.Amber("Missing Fields", "You left some fields empty!");
-			}
-			if (!DataEntryValidation.checkEmailRegex(emailAddress.getText())) {
-				AlertBoxClass.ErrBox("ERROR", "Enter a Valid Email address!");
 			} else {
-				addStudToDB = DatabaseOperations.addStudentToDatabase(Integer.parseInt(masterSerialNum.getText()),
-						firstName.getText(), lastName.getText(), emailAddress.getText(),
-						studentBranch.getValue().toString(), studentCollege.getValue().toString(), GeneratePasswordClass.generatePassword(20));
-				if (addStudToDB) {
-					System.out.println("Student added to database!");
-					AlertBoxClass.Notify("SUCCESS", "Student has been added to database!");
+				if (!DataEntryValidation.checkEmailRegex(emailAddress.getText())) {
+					AlertBoxClass.ErrBox("ERROR", "Enter a Valid Email address!");
+				} else {
+					addStudToDB = DatabaseOperations.addStudentToDatabase(Integer.parseInt(masterSerialNum.getText()),
+							firstName.getText(), lastName.getText(), emailAddress.getText(),
+							studentBranch.getValue().toString(), studentCollege.getValue().toString(),
+							GeneratePasswordClass.generatePassword(20));
+					if (addStudToDB) {
+						System.out.println("Student added to database!");
+						AlertBoxClass.Notify("SUCCESS", "Student has been added to database!");
+					}
 				}
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			AlertBoxClass.Amber("Missing Option", "Please select a dept AND College");
