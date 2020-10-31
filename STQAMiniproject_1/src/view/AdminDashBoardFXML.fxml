@@ -38,14 +38,15 @@
 			<content>
 				<AnchorPane fx:id="studInfoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 					<children>
-						<TableView fx:id="studTabView" layoutX="42.0" layoutY="14.0" prefHeight="274.0" prefWidth="1033.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
+						<TableView fx:id="studTabView" layoutX="42.0" layoutY="14.0" prefHeight="274.0" prefWidth="1033.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
 							<columns>
 								<TableColumn fx:id="stuMSN" prefWidth="75.0" text="MSN" />
-								<TableColumn fx:id="stuFname" prefWidth="211.99996948242188" text="First Name" />
-                        <TableColumn fx:id="stuLname" prefWidth="159.20001220703125" text="Last Name" />
-                        <TableColumn fx:id="stuEmail" prefWidth="326.4000244140625" text="Email" />
-                        <TableColumn fx:id="stuBranch" prefWidth="153.5999755859375" text="Branch" />
-                        <TableColumn fx:id="stuClg" prefWidth="143.199951171875" text="College" />
+								<TableColumn fx:id="stuFname" prefWidth="160.0" text="First Name" />
+                        <TableColumn fx:id="stuLname" prefWidth="145.6000518798828" text="Last Name" />
+                        <TableColumn fx:id="stuEmail" prefWidth="265.6000061035156" text="Email" />
+                        <TableColumn fx:id="stuBranch" prefWidth="159.199951171875" text="Branch" />
+                        <TableColumn fx:id="stuClg" prefWidth="128.800048828125" text="College" />
+                        <TableColumn fx:id="studLogPass" prefWidth="192.8000244140626" resizable="false" text="Login Password" />
 							</columns>
 						</TableView>
 						<Button fx:id="addNewStudBtn" layoutX="50.0" layoutY="445.0" mnemonicParsing="false" onAction="#addNewStud" prefHeight="35.0" prefWidth="200.0" text="Add New Student" AnchorPane.bottomAnchor="121.40000000000003" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="600.0" />

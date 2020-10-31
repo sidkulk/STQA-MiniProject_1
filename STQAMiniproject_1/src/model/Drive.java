@@ -25,6 +25,12 @@ public class Drive {
 		Branch = branch;
 		Ctc = ctc;
 	}
+	
+	public Drive(String dname, String ddate, String ctc) {
+		Dname = dname;
+		Ddate = ddate;
+		Ctc = ctc;
+	}
 	public Integer getDID() {
 		return DID;
 	}

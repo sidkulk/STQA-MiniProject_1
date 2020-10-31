@@ -88,6 +88,9 @@ public class AdminDashBoardFXMLController implements Initializable {
 
     @FXML
     private TableColumn<Student, String> stuClg;
+    
+    @FXML
+    private TableColumn<Student, String> studLogPass;
 	
 	@FXML
 	private Button logOutBtnOne;
@@ -114,7 +117,14 @@ public class AdminDashBoardFXMLController implements Initializable {
 
 	@FXML
 	public void removeSelDrive(ActionEvent event) {
-
+		Drive drive = driveTabView.getSelectionModel().getSelectedItem();
+		boolean driveRemoved = DatabaseOperations.removeSelectedDrive(drive.getDID() , driveTabView);
+		if(driveRemoved) {
+			AlertBoxClass.Notify("SUCCESS", "Drive removed from database!");
+		}
+		else {
+			AlertBoxClass.ErrBox("ERROR", "An error occured on our end! Contact your software vendor!");
+		}
 	}
 
 	@FXML
@@ -124,7 +134,7 @@ public class AdminDashBoardFXMLController implements Initializable {
 
 	@FXML
 	public void removeSelectedStud(ActionEvent event) {
-
+		
 	}
 
 	@FXML
@@ -158,6 +168,7 @@ public class AdminDashBoardFXMLController implements Initializable {
 		stuEmail.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_EMAIL));
 		stuBranch.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_BRANCH));
 		stuClg.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_COLLEGE));
+		studLogPass.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_PASS));
 		stuList = DatabaseOperations.getStudentDetails();
 		studTabView.setItems(stuList);
 	}

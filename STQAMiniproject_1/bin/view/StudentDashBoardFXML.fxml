@@ -15,7 +15,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="168.0" prefHeight="394.0" prefWidth="1226.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="upComingDriveTabView" layoutX="168.0" prefHeight="394.0" prefWidth="1226.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
                               <TableColumn fx:id="driveID" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Drive ID" visible="false" />
                               <TableColumn fx:id="compName" editable="false" prefWidth="247.19997864961624" resizable="false" sortable="false" text="Company" />
@@ -38,9 +38,8 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="1179.0">
                      <children>
-                        <TableView layoutX="282.0" layoutY="14.0" prefHeight="442.0" prefWidth="615.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="14.0">
+                        <TableView fx:id="yourDriveTabView" layoutX="282.0" layoutY="14.0" prefHeight="442.0" prefWidth="615.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="14.0">
                           <columns>
-                            <TableColumn fx:id="yourDriveId" editable="false" prefWidth="75.0" sortable="false" text="Drive ID" visible="false" />
                             <TableColumn fx:id="yourCompName" editable="false" prefWidth="288.79998779296875" sortable="false" text="Company" />
                               <TableColumn fx:id="yourDateOfDrive" editable="false" minWidth="0.0" prefWidth="188.0" sortable="false" text="Date of Drive" />
                               <TableColumn fx:id="yourDriveCTC" editable="false" prefWidth="138.4000244140625" sortable="false" text="CTC" />

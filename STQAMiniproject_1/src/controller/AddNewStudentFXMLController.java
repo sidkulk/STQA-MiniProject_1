@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.DataEntryValidation;
 import model.DatabaseOperations;
+import model.GeneratePasswordClass;
 import screenPack.ScreenPackClass;
 import javafx.scene.control.ComboBox;
 
@@ -59,7 +60,7 @@ public class AddNewStudentFXMLController implements Initializable {
 			} else {
 				addStudToDB = DatabaseOperations.addStudentToDatabase(Integer.parseInt(masterSerialNum.getText()),
 						firstName.getText(), lastName.getText(), emailAddress.getText(),
-						studentBranch.getValue().toString(), studentCollege.getValue().toString());
+						studentBranch.getValue().toString(), studentCollege.getValue().toString(), GeneratePasswordClass.generatePassword(20));
 				if (addStudToDB) {
 					System.out.println("Student added to database!");
 					AlertBoxClass.Notify("SUCCESS", "Student has been added to database!");
