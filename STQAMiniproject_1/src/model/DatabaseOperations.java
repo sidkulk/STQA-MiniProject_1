@@ -199,7 +199,31 @@ public class DatabaseOperations {
 			ps.close();
 			conn.close();
 		} catch (Exception e) {
-
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public static boolean removeSelectedStudent(Integer msn, TableView<Student> tabview) {
+		try {
+			String raw = "DELETE FROM %s WHERE %s = ?";
+			String query = String.format(raw, Main.Constants.STUDENT_TABLE_NAME, StudentDataAccessClass.Constants.STUD_MSN);
+			String ConnURL = Main.Constants.CONNECTION_URL;
+			Class.forName(Main.Constants.CLASS_FOR_NAME);
+			Connection conn = DriverManager.getConnection(ConnURL);
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, msn);
+			int i = ps.executeUpdate();
+			if (i > 0) {
+				res = true;
+				tabview.getItems().removeAll(tabview.getSelectionModel().getSelectedItem());
+			} else {
+				res = false;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return res;
 	}

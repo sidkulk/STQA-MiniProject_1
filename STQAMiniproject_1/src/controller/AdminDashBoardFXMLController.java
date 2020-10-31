@@ -134,7 +134,14 @@ public class AdminDashBoardFXMLController implements Initializable {
 
 	@FXML
 	public void removeSelectedStud(ActionEvent event) {
-		
+		Student stud = studTabView.getSelectionModel().getSelectedItem();
+		boolean studRemoved = DatabaseOperations.removeSelectedStudent(stud.getMSN(), studTabView);
+		if(studRemoved) {
+			AlertBoxClass.Notify("SUCCESS", stud.getFname()+" removed from database!");
+		}
+		else {
+			AlertBoxClass.ErrBox("ERROR", "An error occured on our end! Contact your software vendor!");
+		}
 	}
 
 	@FXML
