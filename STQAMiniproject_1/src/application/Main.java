@@ -1,5 +1,5 @@
 package application;
-	
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.AdminDataAccessClass;
@@ -8,25 +8,24 @@ import model.StudentDataAccessClass;
 import model.StudentDriveDataAccessClass;
 import screenPack.ScreenPackClass;
 
-
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) throws Exception{
+	public void start(Stage primaryStage) throws Exception {
 		createAllTables();
 		ScreenPackClass.showLoginScreen();
 	}
-	
+
 	private void createAllTables() throws Exception {
 		StudentDataAccessClass.createStudentTable();
 		DriveDataAccessClass.createDriveTable();
 		AdminDataAccessClass.createAdminTable();
 		StudentDriveDataAccessClass.createStudentDriveApplyTable();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public static class Constants {
 		public static final String ADMIN_TABLE_NAME = "Admin";
 		public static final String STUDENT_TABLE_NAME = "Student";

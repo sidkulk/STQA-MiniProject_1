@@ -16,6 +16,8 @@ import model.StudentDataAccessClass;
 import screenPack.ScreenPackClass;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import alertBoxPack.AlertBoxClass;
@@ -64,34 +66,34 @@ public class AdminDashBoardFXMLController implements Initializable {
 
 	@FXML
 	private TableColumn<Drive, String> maxLiveBacks;
-	
+
 	@FXML
-    private TableView<Drive> driveTabView;
-	
+	private TableView<Drive> driveTabView;
+
 	@FXML
-    private TableView<Student> studTabView;
-	
+	private TableView<Student> studTabView;
+
 	@FXML
-    private TableColumn<Student, Integer> stuMSN;
+	private TableColumn<Student, Integer> stuMSN;
 
-    @FXML
-    private TableColumn<Student, String> stuFname;
+	@FXML
+	private TableColumn<Student, String> stuFname;
 
-    @FXML
-    private TableColumn<Student, String> stuLname;
+	@FXML
+	private TableColumn<Student, String> stuLname;
 
-    @FXML
-    private TableColumn<Student, String> stuEmail;
+	@FXML
+	private TableColumn<Student, String> stuEmail;
 
-    @FXML
-    private TableColumn<Student, String> stuBranch;
+	@FXML
+	private TableColumn<Student, String> stuBranch;
 
-    @FXML
-    private TableColumn<Student, String> stuClg;
-    
-    @FXML
-    private TableColumn<Student, String> studLogPass;
-	
+	@FXML
+	private TableColumn<Student, String> stuClg;
+
+	@FXML
+	private TableColumn<Student, String> studLogPass;
+
 	@FXML
 	private Button logOutBtnOne;
 
@@ -107,9 +109,14 @@ public class AdminDashBoardFXMLController implements Initializable {
 	@FXML
 	private Button logOutBtnTwo;
 
+	@FXML
+	private Button getDetailsBtn;
+
 	ObservableList<Drive> driveList;
 	ObservableList<Student> stuList;
+	public static List<String> compList = new ArrayList<>();
 
+	// public static Integer msn;
 	@FXML
 	public void addNewDrive(ActionEvent event) throws Exception {
 		ScreenPackClass.showAddNewDriveScreen(campusDrivePane);
@@ -118,11 +125,10 @@ public class AdminDashBoardFXMLController implements Initializable {
 	@FXML
 	public void removeSelDrive(ActionEvent event) {
 		Drive drive = driveTabView.getSelectionModel().getSelectedItem();
-		boolean driveRemoved = DatabaseOperations.removeSelectedDrive(drive.getDID() , driveTabView);
-		if(driveRemoved) {
+		boolean driveRemoved = DatabaseOperations.removeSelectedDrive(drive.getDID(), driveTabView);
+		if (driveRemoved) {
 			AlertBoxClass.Notify("SUCCESS", "Drive removed from database!");
-		}
-		else {
+		} else {
 			AlertBoxClass.ErrBox("ERROR", "An error occured on our end! Contact your software vendor!");
 		}
 	}
@@ -136,10 +142,9 @@ public class AdminDashBoardFXMLController implements Initializable {
 	public void removeSelectedStud(ActionEvent event) {
 		Student stud = studTabView.getSelectionModel().getSelectedItem();
 		boolean studRemoved = DatabaseOperations.removeSelectedStudent(stud.getMSN(), studTabView);
-		if(studRemoved) {
-			AlertBoxClass.Notify("SUCCESS", stud.getFname()+" removed from database!");
-		}
-		else {
+		if (studRemoved) {
+			AlertBoxClass.Notify("SUCCESS", stud.getFname() + " removed from database!");
+		} else {
 			AlertBoxClass.ErrBox("ERROR", "An error occured on our end! Contact your software vendor!");
 		}
 	}
@@ -152,6 +157,14 @@ public class AdminDashBoardFXMLController implements Initializable {
 	@FXML
 	void logOutActionTwo(ActionEvent event) throws Exception {
 		logOutAction(event);
+	}
+
+	@FXML
+	void getDetailsOfSelectedStudent(ActionEvent event) throws Exception {
+		Student stud = studTabView.getSelectionModel().getSelectedItem();
+		DatabaseOperations.getStudDetails(stud.getMSN());
+		compList = DatabaseOperations.getStudCompNames(stud.getMSN());
+		ScreenPackClass.showGetStudDetailsScreen(studInfoPane);
 	}
 
 	@Override
@@ -168,7 +181,7 @@ public class AdminDashBoardFXMLController implements Initializable {
 		maxLiveBacks.setCellValueFactory(new PropertyValueFactory<>(DriveDataAccessClass.Constants.COMP_MAX_LIVE_BACK));
 		driveList = DatabaseOperations.getCompanyDetails();
 		driveTabView.setItems(driveList);
-		
+
 		stuMSN.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_MSN));
 		stuFname.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_FNAME));
 		stuLname.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_LNAME));

@@ -9,7 +9,8 @@ public class Student {
 	private String college;
 	private String Passwd;
 
-	public Student(Integer mSN, String fname, String lname, String email, String branch, String college, String Passwd) {
+	public Student(Integer mSN, String fname, String lname, String email, String branch, String college,
+			String Passwd) {
 		super();
 		MSN = mSN;
 		this.fname = fname;
@@ -18,6 +19,14 @@ public class Student {
 		this.branch = branch;
 		this.college = college;
 		this.Passwd = Passwd;
+	}
+
+	public Student(Integer mSN, String fname, String lname, String email) {
+		super();
+		MSN = mSN;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
 	}
 
 	public Integer getMSN() {
@@ -67,11 +76,11 @@ public class Student {
 	public void setCollege(String college) {
 		this.college = college;
 	}
-	
+
 	public String getPasswd() {
 		return Passwd;
 	}
-	
+
 	public void setPasswd(String Passwd) {
 		this.Passwd = Passwd;
 	}

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.VBox;
+import model.DataEntryValidation;
 import model.DatabaseOperations;
 import screenPack.ScreenPackClass;
 
@@ -35,16 +36,18 @@ public class LoginPageFXMLController {
 	private Button studLoginBtn;
 
 	public static Integer msn;
-	//TODO Connect admin and Student login cred with database and validate entries
+
+	// TODO Connect admin and Student login cred with database and validate entries
 	@FXML
 	public void adminLoginRoutine(ActionEvent event) throws Exception {
 		boolean isLoginCredValid;
-		if (adminIDTxtField.getText().isEmpty() || adminPassTextField.getText().isEmpty()) {
+		if (DataEntryValidation.checkLoginCred(adminIDTxtField.getText(), adminPassTextField.getText())) {
 			AlertBoxClass.Amber("ALERT", "Username OR Password Missing!");
 		} else {
-			isLoginCredValid = DatabaseOperations.checkLoginCred(adminIDTxtField.getText(), adminPassTextField.getText());
+			isLoginCredValid = DatabaseOperations.checkLoginCred(adminIDTxtField.getText(),
+					adminPassTextField.getText());
 			if (isLoginCredValid) {
-				AlertBoxClass.Notify("SUCCESS", "Welcome! "+adminIDTxtField.getText());
+				AlertBoxClass.Notify("SUCCESS", "Welcome! " + adminIDTxtField.getText());
 				ScreenPackClass.showAdminDashScreen(loginRootPane);
 			} else {
 				AlertBoxClass.ErrBox("LOGIN FAIL", "Incorrect credentials!");
@@ -54,18 +57,25 @@ public class LoginPageFXMLController {
 
 	@FXML
 	public void studLoginRoutine(ActionEvent event) throws Exception {
-		msn = Integer.parseInt(studIDTextField.getText());
 		boolean isLoginCredValid;
-		if(studIDTextField.getText().isEmpty() || studentPassTextField.getText().isEmpty()) {
-			System.out.println("Empty Fields!");
+		boolean isANumber;
+		if (DataEntryValidation.checkLoginCred(studIDTextField.getText(), studentPassTextField.getText())) {
+			AlertBoxClass.Amber("ALERT", "Username OR Password Missing!");
 		} else {
-			isLoginCredValid = DatabaseOperations.checkLoginCred(Integer.parseInt(studIDTextField.getText()), studentPassTextField.getText());
-			if(isLoginCredValid) {
-				AlertBoxClass.Notify("SUCCESS", "Welcome "+DatabaseOperations.getFname(Integer.parseInt(studIDTextField.getText())));
-				ScreenPackClass.showStudentDashBoard(loginRootPane);
-			}
-			else {
-				AlertBoxClass.ErrBox("ERROR", "INCORRECT Login details!");
+			// msn = Integer.parseInt(studIDTextField.getText());
+			isANumber = DataEntryValidation.checkMsnLoginNumber(studIDTextField.getText());
+			if (isANumber) {
+				AlertBoxClass.Amber("ALERT", "Incorrect MSN number!");
+			} else {
+				msn = Integer.parseInt(studIDTextField.getText());
+				isLoginCredValid = DatabaseOperations.checkLoginCred(msn, studentPassTextField.getText());
+				if (isLoginCredValid) {
+					AlertBoxClass.Notify("SUCCESS",
+							"Welcome " + DatabaseOperations.getFname(Integer.parseInt(studIDTextField.getText())));
+					ScreenPackClass.showStudentDashBoard(loginRootPane);
+				} else {
+					AlertBoxClass.ErrBox("ERROR", "INCORRECT Login details!");
+				}
 			}
 		}
 	}

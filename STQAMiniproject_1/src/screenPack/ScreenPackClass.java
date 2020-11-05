@@ -38,7 +38,7 @@ public class ScreenPackClass {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	public static void showAddNewDriveScreen(AnchorPane rootpane) throws Exception {
 		Parent root = FXMLLoader.load(Main.class.getResource("/view/AddNewDriveFXML.fxml"));
 		Stage stage = (Stage) rootpane.getScene().getWindow();
@@ -47,7 +47,7 @@ public class ScreenPackClass {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	public static void showAddNewStudentScreen(AnchorPane rootpane) throws Exception {
 		Parent root = FXMLLoader.load(Main.class.getResource("/view/AddNewStudentFXML.fxml"));
 		Stage stage = (Stage) rootpane.getScene().getWindow();
@@ -56,7 +56,7 @@ public class ScreenPackClass {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	public static void showStudentDashBoard(AnchorPane rootpane) throws Exception {
 		Parent root = FXMLLoader.load(Main.class.getResource("/view/StudentDashBoardFXML.fxml"));
 		Stage stage = (Stage) rootpane.getScene().getWindow();
@@ -64,5 +64,10 @@ public class ScreenPackClass {
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
+	}
+
+	public static void showGetStudDetailsScreen(AnchorPane rootpane) throws Exception {
+		AnchorPane pane = FXMLLoader.load(Main.class.getResource("/view/GetStudDetailsFXML.fxml"));
+		rootpane.getChildren().setAll(pane);
 	}
 }

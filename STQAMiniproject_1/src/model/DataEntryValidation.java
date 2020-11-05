@@ -22,6 +22,25 @@ public class DataEntryValidation {
 			return false;
 	}
 	
+	public static boolean checkLoginCred(String uname, String pwd) {
+		if(uname.isEmpty() || pwd.isEmpty())
+			return true;
+		else
+			return false;
+	}
+	
+	public static boolean checkMsnLoginNumber(String msn) {
+		try
+        {
+            Integer.parseInt(msn);
+        }
+        catch(NumberFormatException ex)
+        {
+            return true;
+        }
+        return false;
+	}
+	
 	public static boolean checkEmailRegex(String email) {
 		String EmailRegex = "^(.+)@(.+)$";
 		Pattern patt = Pattern.compile(EmailRegex);

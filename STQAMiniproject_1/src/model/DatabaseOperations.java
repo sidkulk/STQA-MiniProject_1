@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import alertBoxPack.AlertBoxClass;
 import application.Main;
@@ -14,6 +16,10 @@ import javafx.scene.control.TableView;
 
 public class DatabaseOperations {
 	static boolean res = false;
+	public static String getFname = "";
+	public static String getLname = "";
+	public static String getEmail = "";
+	public static Integer getMsn = 0;
 
 	public static boolean addDriveToDatabase(String cname, String cdate, String xthMin, String xIIthMin, String BEMin,
 			String deadBack, String liveBack, String branch, String ctc) {
@@ -334,5 +340,62 @@ public class DatabaseOperations {
 			e.printStackTrace();
 		}
 		return fname;
+	}
+
+	public static boolean getStudDetails(Integer msn) {
+		try {
+			System.out.println("getStudentDetails method called");
+			String raw = "SELECT %s, %s, %s, %s FROM %s WHERE %s = ?";
+			String query = String.format(raw, StudentDataAccessClass.Constants.STUD_MSN,
+					StudentDataAccessClass.Constants.STUD_FNAME, StudentDataAccessClass.Constants.STUD_LNAME,
+					StudentDataAccessClass.Constants.STUD_EMAIL, Main.Constants.STUDENT_TABLE_NAME,
+					StudentDataAccessClass.Constants.STUD_MSN);
+			String ConnURL = Main.Constants.CONNECTION_URL;
+			Class.forName(Main.Constants.CLASS_FOR_NAME);
+			Connection conn = DriverManager.getConnection(ConnURL);
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, msn);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				getMsn = rs.getInt(StudentDataAccessClass.Constants.STUD_MSN);
+				getFname = rs.getString(StudentDataAccessClass.Constants.STUD_FNAME);
+				getLname = rs.getString(StudentDataAccessClass.Constants.STUD_LNAME);
+				getEmail = rs.getString(StudentDataAccessClass.Constants.STUD_EMAIL);
+			}
+			System.out.println("Fname: " + getFname + " Lname: " + getLname + " Email: " + getEmail + " MSN: " + msn);
+			ps.close();
+			conn.close();
+			rs.close();
+		} catch (Exception e) {
+
+		}
+		return res;
+	}
+
+	public static List<String> getStudCompNames(Integer msn) {
+		List<String> compNames = new ArrayList<>();
+		try {
+			String raw = "SELECT %s FROM %s INNER JOIN %s WHERE %s.%s = %s.%s AND %s.%s = ?";
+			String query = String.format(raw, DriveDataAccessClass.Constants.COMP_NAME, Main.Constants.DRIVE_TABLE_NAME,
+					Main.Constants.STUD_DRIVE_APPLY_TAB, Main.Constants.DRIVE_TABLE_NAME,
+					DriveDataAccessClass.Constants.COMP_ID, Main.Constants.STUD_DRIVE_APPLY_TAB,
+					StudentDriveDataAccessClass.Constants.DRIVE_ID, Main.Constants.STUD_DRIVE_APPLY_TAB,
+					StudentDriveDataAccessClass.Constants.STUD_ID);
+			String ConnURL = Main.Constants.CONNECTION_URL;
+			Class.forName(Main.Constants.CLASS_FOR_NAME);
+			Connection conn = DriverManager.getConnection(ConnURL);
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, msn);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				compNames.add(rs.getString(DriveDataAccessClass.Constants.COMP_NAME));
+			}
+			ps.close();
+			conn.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return compNames;
 	}
 }
