@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.DatabaseOperations;
@@ -22,6 +23,8 @@ import java.util.ResourceBundle;
 
 import alertBoxPack.AlertBoxClass;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 
 public class AdminDashBoardFXMLController implements Initializable {
@@ -33,7 +36,10 @@ public class AdminDashBoardFXMLController implements Initializable {
 
 	@FXML
 	private Button AddNewDriveBtn;
-
+	
+	@FXML
+	private TextField searchBarTxt;
+	
 	@FXML
 	private Button RemoveSelectedDriveBtn;
 
@@ -159,6 +165,36 @@ public class AdminDashBoardFXMLController implements Initializable {
 		logOutAction(event);
 	}
 
+	void searchStudRecord() {
+
+		FilteredList<Student> filteredData = new FilteredList<>(stuList, b -> true);
+
+		searchBarTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(student -> {
+
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				String lowerCaseFilter = newValue.toLowerCase();
+
+				if (student.getFname().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (student.getLname().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (student.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (String.valueOf(student.getMSN()).indexOf(lowerCaseFilter) != -1)
+					return true;
+				else
+					return false;
+			});
+		});
+		
+		SortedList<Student> sortedData = new SortedList<>(filteredData);
+		sortedData.comparatorProperty().bind(studTabView.comparatorProperty());
+		studTabView.setItems(sortedData);
+	}
+	
 	@FXML
 	void getDetailsOfSelectedStudent(ActionEvent event) throws Exception {
 		Student stud = studTabView.getSelectionModel().getSelectedItem();
@@ -191,5 +227,7 @@ public class AdminDashBoardFXMLController implements Initializable {
 		studLogPass.setCellValueFactory(new PropertyValueFactory<>(StudentDataAccessClass.Constants.STUD_PASS));
 		stuList = DatabaseOperations.getStudentDetails();
 		studTabView.setItems(stuList);
+		
+		searchStudRecord();
 	}
 }
